@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <style>
+
+        
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* Colorful Lights Effect */
+#colorfulLights {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.light {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: lightsAnimation 2s infinite;
+}
+
+@keyframes lightsAnimation {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-50vh) scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #121212;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    background-color: #000000;
+    padding: 24px;
+}
+
+.sidebar .logo img {
+    width: 130px;
+}
+
+.sidebar .navigation ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar .navigation ul li {
+    padding: 10px 0px;
+}
+
+.sidebar .navigation ul li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.sidebar .navigation ul li .fa {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.sidebar .navigation ul li a:hover {
+    color: #ffffff;
+}
+
+.sidebar .policies {
+    position: absolute;
+    bottom: 100px;
+}
+
+.sidebar .policies ul {
+    list-style: none;
+}
+
+.sidebar .policies ul li {
+    padding-bottom: 5px;
+}
+
+.sidebar .policies ul li a {
+    color: #b3b3b3;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 10px;
+}
+
+.sidebar .policies ul li a:hover {
+    text-decoration: underline;
+}
+
+.main-container {
+    margin-left: 350px;
+    margin-bottom: 100px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #000;
+    padding: 14px 30px;
+}
+
+.topbar .prev-next-buttons button {
+    color: #7a7a7a;
+    cursor: not-allowed;
+    width: 34px;
+    height: 34px;
+    border-radius: 100%;
+    font-size: 18px;
+    border: 0px;
+    background-color: #090909;
+    margin-right: 10px;
+}
+
+.topbar .navbar {
+    display: flex;
+    align-items: center;
+}
+
+.topbar .navbar ul {
+    list-style: none;
+}
+
+.topbar .navbar ul li {
+    display: inline-block;
+    margin: 0px 8px;
+    width: 70px;
+}
+
+.topbar .navbar ul li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.topbar .navbar ul li a:hover {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.topbar .navbar button {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 14px 30px;
+    border: 0px;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.topbar .navbar button:hover {
+    background-color: #f2f2f2;
+}
+
+
+
+.spotify-playlists hr {
+    margin: 70px 0px 0px;
+    border-color: #636363;
+}
+
+.preview {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, #ae2896, #509bf5);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.preview h6 {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.preview p {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.preview button {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 14px 30px;
+    border: 0px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+h1 {
+    margin: 0;
+}
+/* Style for the container */
+.spotify-playlists {
+    display: flex;
+    flex-wrap: wrap; /* Wrap to the next row if needed */
+    justify-content: space-between; /* Space items evenly across the row */
+    gap: 20px; /* Add spacing between song containers */
+}
+.song {
+    text-align: center;
+    background-color: rgb(253, 252, 252);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(2, 233, 245, 0.971);
+    width: 250px;
+}
+
+img {
+    max-width: 100%;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+/* Chatbox Button */
+.chatbox-button {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .chatbox-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+  }
+  
+  /* Chatbox */
+  .chat-container {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transform: translateX(400px);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9999;
+  }
+  
+  .chat-container.open {
+    transform: translateX(0);
+  }
+  
+  /* Chatbox Header */
+  .chat-header {
+    background-image: url('https://a-static.besthdwallpaper.com/night-scenery-fantasy-wallpaper-2880x960-80895_104.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #fffbfb;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .chat-header h2 {
+    margin: 0;
+  }
+  
+  /* Chatbox Body */
+  .chat-body {
+    padding: 10px;
+    height: 290px;
+    overflow-y: scroll;
+  }
+  
+  .message-container {
+    margin-bottom: 10px;
+  }
+  
+  .message-container.user {
+    text-align: right;
+  }
+  
+  .message-container.bot {
+    text-align: left;
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background-color: #e0e0e0; /* Light gray background */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Chatbox Footer */
+  .chat-footer {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  #userInput {
+    flex: 1;
+    padding: 5px;
+    border-radius: 20px;
+    border: 1px solid #0074d9;
+    outline: none;
+  }
+  
+  #sendButton {
+    padding: 5px 10px;
+    background-color: #0594ed;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  
+  /* Microphone Icon */
+  #micIcon {
+    display: inline-block;
+    width: 31px;
+    height: 31px;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/011/893/967/non_2x/neumorphic-microphone-icon-neumorphism-ui-button-free-png.png'); /* Replace with your microphone icon URL */
+    background-size: cover;
+    cursor: pointer;
+  }
+  
+  #micIcon:hover {
+    opacity: 0.8;
+  }
+  
+  /* Suggestions Container */
+  .suggestions-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  
+  .suggestion-button {
+    background-color: transparent;
+    border: 1px solid #007bff;
+    color: #131313;
+    padding: 6px 12px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+  }
+  
+  
+  
+  .suggestion-button:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Like and Dislike Icons */
+  .like-icon,
+  .dislike-icon {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-right: 10px;
+  }
+  
+  /* Like Icon Styles */
+  .like-icon {
+    color: #090909;
+  }
+  
+  .like-icon.clicked {
+    color: #0055ff;
+  }
+  
+  /* Dislike Icon Styles */
+  .dislike-icon {
+    color: #0f0f0f;
+  }
+  
+  .dislike-icon.clicked {
+    color: #ff0000;
+  }
+
+  .about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgb(1, 252, 227);
+}
+
+/* Style for the heading */
+.about-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Style for the paragraph */
+.about-container p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+}
+
+.video-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+}
+
+.video-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Additional styling for the video info */
+.video-info {
+    padding: 20px;
+    background-color: #fff;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+.latest-updates-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.latest-updates-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.update-item {
+    margin-top: 20px;
+}
+
+.update-item img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.update-item p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #060606;
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+  }
+  
+  .social-icon {
+    margin-right: 10px;
+  }
+  
+  .social-icon:last-child {
+    margin-right: 0;
+  }
+  
+  .social-icon i {
+    font-size: 24px;
+    color: #555;
+    transition: color 0.3s ease;
+  }
+  
+  .social-icon i:hover {
+    color: #007bff;
+  }
+  .social-icon i.fab.fa-twitter {
+    color: #1da1f2;
+  }
+  
+  .social-icon i.fab.fa-instagram {
+    color: #c13584;
+  }
+  .social-icon i.fab.fa-youtube {
+    color: #cd201f;
+  }
+  
+  .social-icon i.fab.fa-discord {
+    color: #7289da;
+  }
+
+  .image-container {
+            margin-top: 20px; /* Adjust margin as needed */
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 10px solid;
+            border-image: linear-gradient(to right, rgb(255, 196, 0), rgb(247, 248, 247), rgb(0, 255, 110));
+            border-image-slice: 1;
+            padding: 10px; /* Adjust padding to control the border thickness */
+        }
+
+  /* Artist section styling */
+  .artist-section {
+            background-color: #f0f0f0; /* Light background color for the artist section */
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .artist {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .artist img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%; /* Make the artist images circular */
+            margin-bottom: 10px;
+        }
+
+        .artist h2 {
+            color: #333333;
+        }
+
+        .artist p {
+            color: #666666;
+        }
+
+  /* Launch Section Styles */
+.launch-section {
+    background-color: #f8f8f8;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.launch-item {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.video-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.video-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.launch-info {
+    padding: 20px;
+}
+
+.launch-info h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.launch-info p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Optional: Add styling for a button or link if you want users to take action */
+.launch-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.launch-button:hover {
+    background-color: #2980b9;
+}
+
+
+
+
+
+
+  
+    </style>
+    <title>8D AUDIO MUSIC PRODUCTION </title>
+   
+    
+</head>
+
+<body>
+<!-- Colorful Lights Effect -->
+<div id="colorfulLights"></div>
+
+
+    <div class="sidebar">
+        <div class="logo">
+            <a href="https://8daudiomusicpro.github.io/8daudiomusicpr/">
+                <img src="logo.png.png" alt="Logo">
+            </a>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="https://8daudiomusicpro.github.io/8daudiomusicpr/">
+                       
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/@8daudiomusicproduction/featured">
+                        <span>YouTube</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://youtu.be/ZceLsGUwgPc?si=hS2iDyA9N38mU6lJ">
+                        
+                        <span>Trending Videos</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="https://8daudiomusicpro.github.io/8daudio/?">
+                       
+                        <span>Music Player</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/@8daudiomusicproduction/videos">
+                       
+                        <span>Our Videos</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="policies">
+            <ul>
+                <li>
+                    <a href="https://8daudiomusicpro.github.io/8daudiomusicpro/">Terms and Conditions</a>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+
+    <div class="main-container">
+        <div class="topbar">
+            <div class="prev-next-buttons">
+                <button type="button" class="fa fas fa-chevron-left"></button>
+                <button type="button" class="fa fas fa-chevron-right"></button>
+            </div>
+
+            <div class="navbar">
+                <ul>
+                    <li>
+                        <a href="https://twitter.com/8daudiomusicpro">Twitter</a>
+                    </li>
+                </ul>
+                <a href="https://8daudiomusicproduction.github.io/8daudiomusicproduction/#">
+                <button type="button">Logout</button>
+                </a>
+            </div>
+        </div>
+       
+    <div class="about-container" >
+        <h1>Welcome To 8D Audio Music Production</h1>
+        <div class="image-container">
+            <img src="https://t3.ftcdn.net/jpg/02/93/94/24/240_F_293942400_5V7R0JfXMXuvjlmzkHkGR5uEUXJNVFzQ.jpg" id="image1">
+           </div>
+          
+
+        <p>8D Audio Music Production is one of the biggest music labels. Started by Ayan Singh. All the rights reserved ©️ from T-Series, Zee Music Company, and DJ NYK... For business inquiries - 8dmusicproductionr@gmail.com</a></p>
+        
+        <div class="video-container">
+        <div class="video-wrapper">
+            <iframe class="video-iframe" src="https://www.youtube.com/embed/tOK98mj_G8A?si=cgAWxgav1Qmg0pOY" frameborder="0"
+                allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+            <h1>Mere Ghar Ram Aaye Hain</h1>
+            <p>Published by <a href="https://www.youtube.com/@8daudiomusicproduction">8D Audio Music Production</a></p>
+            </div>
+            </div>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe class="video-iframe" src="https://www.youtube.com/embed/3WckR2fLMPY?si=yoUzNreu-5jpkRxe" frameborder="0"
+                        allowfullscreen></iframe>
+                </div>
+               
+                <div class="video-info">
+                    <h1>Chhath Puja Special Non-Stop Chhath Puja Geet</h1>
+                    <p>Published by <a href="https://www.youtube.com/@8daudiomusicproduction">8D Audio Music Production</a></p>
+                </div>
+              
+               
+           
+              <br> 
+                <div class="latest-updates-container">
+    <div class="update-item">
+        <img src="https://c.saavncdn.com/617/Bolero-Hindi-2023-20231017130525-500x500.jpg" alt="Update Image">
+        <p>Bolero Lyrics video comming soon</p>
+    </div>
+    </div>
+   <br>
+   <br>
+  <!-- Artist section -->
+  <div class="artist-section">
+    <h2>Featured Artists</h2>
+
+    <div class="artist">
+        <img src="http://t0.gstatic.com/images?q=tbn:ANd9GcQbArAf1wl8ij8Ydx9eLwxh8-q0CrQ-A9tOvY7W2e5QlDLSSsWwZHCU9S-9avViqTLIinVK" alt="Artist 1">
+        <h2>Jubin Nautiyal</h2>
+        <p>Jubin Nautiyal (born 14 June 1989) is an Indian playback singer and live performer. In June 2022, he won the IIFA award for “Playback Singer (Male)” for the song “Raataan Lambiyan.” He was awarded Upcoming Male Vocalist of the Year at 8th Mirchi Music Awards for his song "Zindagi Kuch Toh Bata (Reprise)" from Bajrangi Bhaijaan. He also won the Rising Musical Star Award at Zee Business Awards. He has since recorded songs for films in various Indian languages, predominantly Hindi.</p>
+    </div>
+   <!-- Launch Section -->
+<div class="launch-section">
+    <h2>Upcoming Launch</h2>
+
+    <div class="launch-item">
+        <div class="video-wrapper">
+            <iframe class="video-iframe" src="https://www.youtube.com/embed/j0YeIhW0ORI?si=oH0Mod2da6dwZS3W" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="launch-info">
+            <h2>Exciting news! We have an upcoming launch event.</h2>
+            <p>Stay tuned for more details and be the first to experience something amazing.</p>
+            <p>Date: [12th November 2023]</p>
+            <p>Time: [11:45 AM]</p>
+            <!-- Optional: Add a button or link for users to take action -->
+            <a href="https://youtu.be/j0YeIhW0ORI" class="launch-button">Learn More</a>
+        </div>
+    </div>
+</div>
+
+    <br>
+    <br>
+        <!--Social Icons-->
+  <div class="social-icons">
+    <a href="https://www.youtube.com/@8daudiomusicproduction/featured"target="_main" class="social-icon"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/8d_audio_music_production/"target="_main" class="social-icon"><i class="fab fa-instagram"></i></a>
+    <a href="https://twitter.com/8daudiomusicpro"target="_main" class="social-icon"><i class="fab fa-twitter"></i></a>
+    <a href="https://discord.com/invite/3zz5sXAfBz"target="_main" class="social-icon"><i class="fab fa-discord"></i></a>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <!-- Chatbox Button -->
+<div class="chatbox-button" onclick="toggleChatbox()">
+    <img src="https://cdn.dribbble.com/users/6985884/screenshots/15849023/media/6dfb9f3caf75d8b6acc1f9bde6b885fa.gif" alt="Chatbox Logo" class="chatbox-button-logo">
+  </div>
+  <!-- Chatbox -->
+  <div class="chat-container" id="chatContainer">
+    <div class="chat-header">
+      <h2>Chat With AI</h2>
+    </div>
+    
+    <div class="chat-body" id="chatBody">
+      <!-- Chat messages will be appended here dynamically -->
+      <div class="message-container bot">
+        <div class="message">Hi! How can I assist you today?</div>
+      </div>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="userInput" placeholder="Type your message...">
+      <div id="micIcon" onclick="startSpeechRecognition()"></div>
+      <button id="sendButton" onclick="sendMessage()">Send</button> 
+  </div>
+ 
+    <!-- Suggestions Container -->
+    <div class="suggestions-container" id="suggestionsContainer"></div>
+  </div>
+  
+   
+
+    <script src="https://kit.fontawesome.com/ef9a692198.js" crossorigin="anonymous">
+ 
+    </script>
+    <script src="music.js"></script>
+    <script>
+
+// Function to create colorful lights with specific colors
+function createLight() {
+    const light = document.createElement('div');
+    light.className = 'light';
+
+    const xPos = Math.random() * window.innerWidth;
+    const yPos = Math.random() * window.innerHeight;
+
+    light.style.left = `${xPos}px`;
+    light.style.top = `${yPos}px`;
+    light.style.background = getRandomColor();
+
+    document.getElementById('colorfulLights').appendChild(light);
+
+    // Remove light after animation duration
+    setTimeout(() => {
+        document.getElementById('colorfulLights').removeChild(light);
+    }, 2000);
+}
+
+// Function to get a specific color
+function getRandomColor() {
+    const colors = ['#f0ec07','#f00707','#6007f0','#07f026','#07d8f0']; // Blue, Green, Red, Yellow, Pink, Purple
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// Function to trigger colorful lights on page load
+function triggerColorfulLights() {
+    setInterval(() => {
+        createLight();
+    }, 500);
+}
+
+// Trigger colorful lights when the page loads
+window.onload = triggerColorfulLights;
+
+
+
+
+    </script>
+    
+</body>
+
+</html>
