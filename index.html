@@ -1,47 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>8D Audio Music Production</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body, html {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        
-
-        .full-size-image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-            position: relative;
-        }
-
-        .full-size-image-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover;
-            position: absolute;
-        }
-    </style>
 </head>
+
 <body>
-    <header>
-        
+    <link rel="icon" type="image/x-icon" href="logo.png.png" />
+</head>
+</ul>
+    <nav>
+        <div class="nav-logo">
+            <a href="#">
+                <img src="logo.png.png" alt="Logo">
+            </a>
+        </div>
+        <!-- Navbar Toggle Button -->
+<div class="nav-toggle" id="navToggle">
+    <i class="ri-menu-line"></i> <!-- You can use an icon for the toggle button -->
+</div>
+
+       
+        <ul class="nav-links" id="navLinks">
+            <li class="link"><a href="https://8daudiomusicpro.github.io/8daudiomusicpr/?">Home</a></li>
+            <li id="link1" class="link"><a href="https://www.youtube.com/@8daudiomusicproduction/featured"target="_main">YouTube</a></li>
+            <li id="link2" class="link"><a href="https://8daudiomusicpro.github.io/8daudiomusicplayer/"target="_main">Music Player</a></li>
+            <li id="link3" class="link"><a href="#">About</a></li>
+        </ul>
+        <a href="https://8daudiomusicproduction.github.io/8daudiomusicproduction/#" class="btn">Logout</a>
+    </nav>
+
+    <header class="container">
+        <div class="content">
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <h4>Hello Dear</h4>
+            <H1>Welcome <span> To</span> 8D Audio Music Production</H1>
+            <p>
+                8D Audio Music Production is one of the biggest music labels. Started by Ayan Singh. All the rights reserved ©️ from T-Series, Zee Music Company, and DJ NYK... For business inquiries - 8dmusicproductionr@gmail.com
+            </p>
+            <a href="https://www.youtube.com/@8daudiomusicproduction/featured" class="btn">Subscribe</a>
+        </div>
     </header>
-    <div class="full-size-image-container">
-        <img src="https://media.istockphoto.com/id/1348157796/vector/website-under-construction-page-web-page-under-construction-website-under-maintenance-page.jpg?s=612x612&w=0&k=20&c=vJCWlc0t7pZY3b41LciyKsXQAtcDlMqzq2M7zOsl5rI=" alt="Full Size Image">
+    
+    <section class="container">
+        <h2 class="header">OUR FEATURES</h2>
+        <div class="features">
+            <div class="card">
+                <span><i class="ri-money-dollar-box-line"></i></span>
+                <h4>Free Music Player</h4>
+                <p>
+                   Our Music Player is free of cost and easy to download songs.
+                </p>
+            </div>
+            <div class="card">
+                <span><i class="ri-bug-line"></i></span>
+                <h4>Fix Your Bugs</h4>
+                <p>
+                    You have any problem in our website then send a email to our team.
+                </p>
+            </div>
+            <div class="card">
+                <span><i class="ri-history-line"></i></span>
+                <h4>On Time Videos</h4>
+                <p>
+                    We have video each 10 days, So check channel every 10 days to watch it!
+                </p>
+            </div>
+            <div class="card">
+                <span><i class="ri-shake-hands-line"></i></span>
+                <h4>Cooperation</h4>
+                <p>
+                    You want we work together? Write email to us, we will read it.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbox Button -->
+    <div class="chatbox-button" onclick="toggleChatbox()">
+        <img src="https://cdn.dribbble.com/users/6985884/screenshots/15849023/media/6dfb9f3caf75d8b6acc1f9bde6b885fa.gif" alt="Chatbox Logo" class="chatbox-button-logo">
     </div>
+    <!-- Chatbox -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h2>Chat With AI</h2>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <!-- Chat messages will be appended here dynamically -->
+            <div class="message-container bot">
+                <div class="message">Hi! How can I assist you today?</div>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <div id="micIcon" onclick="startSpeechRecognition()"></div>
+            <button id="sendButton" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <footer class="container">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <div class="column">
+            <div class="logo">
+                <img src="logo.png.png" alt="Logo">
+            </div>
+            <p>
+                Thanks for visiting.
+            </p>
+            <div class="socials">
+                <a href="https://www.youtube.com/@8daudiomusicproduction/featured"><i class="ri-youtube-line"></i></a>
+                <a href="https://www.instagram.com/8d_audio_music_production/"><i class="ri-instagram-line"></i></a>
+                <a href="https://twitter.com/8daudiomusicpro"><i class="ri-twitter-line"></i></a>
+            </div>
+        </div>
+        <div class="column">
+            <h4>Company</h4>
+            <a href="https://www.youtube.com/channel/UCthjI8cJuvwVl32XP3Qj0yw">Business</a>
+            <a href="https://www.tseries.com/">Partnership</a>
+            <a href="https://youtu.be/ZceLsGUwgPc?si=cl12dRAM11cHQ9hp">Trending Video</a>
+        </div>
+        <div class="column">
+            <h4>About Us</h4>
+            <a href="https://8daudiomusicproduction.github.io/8daudiomusicproduction/">Website</a>
+            <a href="https://www.youtube.com/channel/UCthjI8cJuvwVl32XP3Qj0yw">Channels</a>
+            <a href="https://new.express.adobe.com/?promoid=4JW7987Y&mv=other">Sponsors</a>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <a href="https://discord.com/channels/780652557579321355/935449383602892810">Contact Us</a>
+            <a href="https://8daudiomusicpro.github.io/8daudiomusicpro/">Privacy Policy</a>
+            <a href="https://8daudiomusicpro.github.io/8daudiomusicpro/">Terms & Conditions</a>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        Copyright © 2024 8D Audio Music Production. All Rights Reserved.
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            navToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('show');
+            });
+        });
+
+        function scrollToElement(elementSelector, instance = 0) {
+            const elements = document.querySelectorAll(elementSelector);
+            if (elements.length > instance) {
+                elements[instance].scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        const link1 = document.getElementById("link1");
+        const link2 = document.getElementById("link2");
+        const link3 = document.getElementById("link3");
+
+        link1.addEventListener('click', () => {
+            scrollToElement('.header');
+        });
+
+        link2.addEventListener('click', () => {
+            scrollToElement('.header', 1);
+        });
+
+        link3.addEventListener('click', () => {
+            scrollToElement('.column');
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/ef9a692198.js" crossorigin="anonymous"></script>
+    <script src="music.js"></script>
+
 </body>
 </html>

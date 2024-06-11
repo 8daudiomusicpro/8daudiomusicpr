@@ -343,29 +343,107 @@ footer .column > a:hover{
     text-align: center;
 }
 
-@media (width < 900px){
-    .nav-links{
+/* Default navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: transparent;
+}
+
+.nav-logo img {
+    height: 50px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Toggle button for small screens */
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+}
+
+
+
+
+/* Media queries */
+@media only screen and (max-width: 767px) {
+    /* Hide the navigation links and display the toggle button */
+    .nav-links {
         display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
     }
-    header{
-        grid-template-columns: repeat(1, 1fr);
+
+    .nav-links.show {
+        display: flex;
     }
-    
-    footer{
-        grid-template-columns: 1fr 200px;
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-toggle {
+        display: block;
     }
 }
 
-@media (width < 600px){
-    header .image::before{
-        display: none;
+
+/* Default styles */
+
+/* Example media query for tablets */
+@media only screen and (min-width: 600px) and (max-width: 1023px) {
+    /* Adjust styles for tablets here */
+}
+
+/* Example media query for small desktops */
+@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+    /* Adjust styles for small desktops here */
+}
+
+/* Example media query for large desktops */
+@media only screen and (min-width: 1200px) {
+    /* Adjust styles for large desktops here */
+}
+
+  /* Default navigation styles */
+
+@media only screen and (max-width: 767px) {
+    /* Styles for screens smaller than 768px (e.g., smartphones) */
+    .nav-links {
+        display: none; /* Hide the navigation links */
     }
 
+    .nav-toggle {
+        display: block; /* Show the navigation toggle button */
     }
-    .spotify-playlists hr {
-    margin: 70px 0px 0px;
-    border-color: #636363;
+
+    .show {
+        display: flex; /* Show the navigation links when the toggle is active */
+    }
 }
+
 
 .preview {
     position: fixed;
