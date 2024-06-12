@@ -12,27 +12,27 @@
 <body>
     <link rel="icon" type="image/x-icon" href="logo.png.png" />
 </head>
-</ul>
-    <nav>
-        <div class="nav-logo">
-            <a href="#">
-                <img src="logo.png.png" alt="Logo">
-            </a>
-        </div>
-        <!-- Navbar Toggle Button -->
-<div class="nav-toggle" id="navToggle">
-    <i class="ri-menu-line"></i> <!-- You can use an icon for the toggle button -->
-</div>
+<nav>
+    <div class="nav-logo">
+        <a href="#">
+            <img src="logo.png.png" alt="Logo">
+        </a>
+    </div>
 
-       
-        <ul class="nav-links" id="navLinks">
-            <li class="link"><a href="https://8daudiomusicpro.github.io/8daudiomusicpr/?">Home</a></li>
-            <li id="link1" class="link"><a href="https://www.youtube.com/@8daudiomusicproduction/featured"target="_main">YouTube</a></li>
-            <li id="link2" class="link"><a href="https://8daudiomusicpro.github.io/8daudiomusicplayer/"target="_main">Music Player</a></li>
-            <li id="link3" class="link"><a href="#">About</a></li>
-        </ul>
-        <a href="https://8daudiomusicproduction.github.io/8daudiomusicproduction/#" class="btn">Logout</a>
-    </nav>
+    <div class="toggle-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+        <li class="link"><a href="https://8daudiomusicpro.github.io/8daudiomusicpr/?">Home</a></li>
+        <li id="link1" class="link"><a href="https://www.youtube.com/@8daudiomusicproduction/featured" target="_main">YouTube</a></li>
+        <li id="link2" class="link"><a href="https://8daudiomusicpro.github.io/8daudiomusicplayer/" target="_main">Music Player</a></li>
+        <li id="link3" class="link"><a href="#">About</a></li>
+    </ul>
+    <a href="https://8daudiomusicproduction.github.io/8daudiomusicproduction/#" class="btn">Logout</a>
+</nav>
 
     <header class="container">
         <div class="content">
@@ -145,37 +145,12 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navToggle = document.getElementById('navToggle');
-            const navLinks = document.getElementById('navLinks');
+    
+    document.querySelector('.toggle-btn').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('active');
+});
 
-            navToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('show');
-            });
-        });
 
-        function scrollToElement(elementSelector, instance = 0) {
-            const elements = document.querySelectorAll(elementSelector);
-            if (elements.length > instance) {
-                elements[instance].scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        const link1 = document.getElementById("link1");
-        const link2 = document.getElementById("link2");
-        const link3 = document.getElementById("link3");
-
-        link1.addEventListener('click', () => {
-            scrollToElement('.header');
-        });
-
-        link2.addEventListener('click', () => {
-            scrollToElement('.header', 1);
-        });
-
-        link3.addEventListener('click', () => {
-            scrollToElement('.column');
-        });
     </script>
     <script src="https://kit.fontawesome.com/ef9a692198.js" crossorigin="anonymous"></script>
     <script src="music.js"></script>
