@@ -67,6 +67,7 @@ function sendMessage() {
   // Example function to generate an answer based on the user's question
   function generateAnswer(question) {
     // Add custom question and answer logic here
+   
     if (question === 'What is your favorite color?') {
       return 'My favorite color is Yellow.';
     }
@@ -262,6 +263,46 @@ function sendMessage() {
    if (question === 'Happy Diwali'){
     return 'Happy Diwali my dear user🎊🧨.'
    }
+   if (question === 'Who is known as the Nightingale of India?') {
+    return 'Lata Mangeshkar is known as the Nightingale of India for her melodious voice and prolific contribution to Indian music.';
+  }
+  if (question ==='What is the classical dance form from Kerala that involves elaborate costumes and makeup?') {
+    return 'Kathakali is the classical dance form from Kerala that is known for its elaborate costumes, intricate makeup, and expressive performances.';
+  }
+  if (question ==='What are the main differences between Hindustani and Carnatic music?') {
+    return 'Hindustani music is primarily from North India, while Carnatic music originates from South India. Hindustani music places a greater emphasis on improvisation and extensive use of ragas, whereas Carnatic music is more composition-based and uses a different set of ragas and talas.';
+  }
+  if (question === 'What is Bollywood music?') {
+    return 'Bollywood music refers to the songs featured in Indian Hindi-language films. It is characterized by its eclectic mix of Indian classical, folk, and contemporary musical styles.';
+  }
+  if (question === 'Who are some of the most famous playback singers in Bollywood?') {
+    return 'Some of the most famous playback singers in Bollywood include Lata Mangeshkar, Kishore Kumar, Asha Bhosle, Mohammed Rafi,Jubin Nautiyal and Arijit Singh.';
+  }
+  if (question === 'Which was the first Indian sound film?') {
+    return 'The first Indian sound film was "Alam Ara," released in 1931.';
+  }
+  if (question === 'Who composed the national song of India, "Vande Mataram"?') {
+    return '"Vande Mataram" was composed by Bankim Chandra Chatterjee, with music later set by Rabindranath Tagore.';
+  }
+  if (question === 'What is a sitar, and how is it used in Indian music?') {
+    return ' The sitar is a plucked stringed instrument used mainly in Hindustani classical music. It has a long neck, a gourd-shaped body, and typically features 18-21 strings. It is known for its rich, resonant sound and is played using a combination of plucking and sympathetic strings.';
+  }
+  if (question === 'What is the significance of the tabla in Indian music?') {
+    return 'The tabla is a pair of drums that is essential in Hindustani classical music. It consists of two drums – the smaller, higher-pitched dayan and the larger, deeper-sounding bayan. The tabla is renowned for its intricate rhythmic patterns and versatility.';
+  }
+  if (question === 'Who are some rising stars in the Indian music industry?') {
+    return ' Some rising stars in the Indian music industry include Prateek Kuhad, Ritviz, Divine, and Neha Kakkar.';
+  }
+  if (question === 'What are some popular music festivals in India?') {
+    return 'Popular music festivals in India include NH7 Weekender, Sunburn Festival, Magnetic Fields, and the Rajasthan International Folk Festival.';
+  }
+  if (question === 'How does music influence Indian culture?') {
+    return ' Music is deeply woven into the fabric of Indian culture. It plays a vital role in religious ceremonies, festivals, weddings, and everyday life. Indian music reflects the country diversity, with various regions having their own unique musical traditions and styles.';
+  }
+  if (question === 'What is the role of ragas in Indian classical music?') {
+    return 'Ragas are the melodic frameworks used in Indian classical music. Each raga is associated with specific emotions and times of the day or seasons, and it serves as the basis for improvisation and composition in performances.';
+  }
+
     // Default answer if no match is found
     return "I'm sorry, I don't have an answer for that question,Our team is working on it.";
   }
@@ -409,7 +450,7 @@ function sendMessage() {
     }
   }
   // Suggestion array
-  var suggestions = ['Tell me about the company', 'What is your Name','I am facing some issue on your website',' Happy Diwali'];
+  var suggestions = ['Tell me about the company', 'What is your Name','I am facing some issue on your website',' Who is known as the Nightingale of India?','What is Bollywood music?','Who are some of the most famous playback singers in Bollywood?','How does music influence Indian culture?'];
   
   // Function to display suggestions
   function displaySuggestions() {
@@ -577,4 +618,66 @@ function sendMessage() {
   });
   
   
-  
+
+ // Function to speak the message
+function speakMessage(message) {
+  var synth = window.speechSynthesis;
+  var utterance = new SpeechSynthesisUtterance(message);
+  synth.speak(utterance);
+}
+
+// Function to display the message in the chatbox
+function displayMessage(message, sender) {
+  var chatBody = document.getElementById('chatBody');
+  var messageElement = document.createElement('div');
+  messageElement.classList.add('message-container');
+  messageElement.classList.add(sender === 'user' ? 'user' : 'bot');
+  var paragraphElement = document.createElement('p');
+  paragraphElement.textContent = message;
+  paragraphElement.style.color = sender === 'user' ? 'black' : ''; // Set text color to black for user messages
+
+  // Add like and dislike icons for bot messages
+  if (sender === 'bot') {
+      var likeIcon = document.createElement('i');
+      likeIcon.classList.add('far');
+      likeIcon.classList.add('fa-thumbs-up');
+      likeIcon.classList.add('like-icon');
+      likeIcon.addEventListener('click', likeAnswer);
+
+      var dislikeIcon = document.createElement('i');
+      dislikeIcon.classList.add('far');
+      dislikeIcon.classList.add('fa-thumbs-down');
+      dislikeIcon.classList.add('dislike-icon');
+      dislikeIcon.addEventListener('click', dislikeAnswer);
+
+      var iconContainer = document.createElement('div');
+      iconContainer.classList.add('icon-container');
+      iconContainer.appendChild(likeIcon);
+      iconContainer.appendChild(dislikeIcon);
+
+      messageElement.appendChild(paragraphElement);
+      messageElement.appendChild(iconContainer);
+
+      // Speak the chatbot response
+      speakMessage(message);
+  } else {
+      messageElement.appendChild(paragraphElement);
+  }
+
+  chatBody.appendChild(messageElement);
+}
+// Function to speak the message with a male voice
+function speakMessage(message) {
+  var synth = window.speechSynthesis;
+  var utterance = new SpeechSynthesisUtterance(message);
+
+  // Select a male voice with a pleasant tone
+  var voices = synth.getVoices();
+  var maleVoice = voices.find(voice => voice.name === 'Google UK English Male'); // You can adjust the voice to fit your preference
+
+  if (maleVoice) {
+      utterance.voice = maleVoice;
+  }
+
+  synth.speak(utterance);
+}
