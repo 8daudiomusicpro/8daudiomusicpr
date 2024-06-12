@@ -93,22 +93,22 @@ function sendMessage() {
       return 'Welcome To 8D Audio Music Production Official Website.';
     }
     if (question === 'Tell me about the company') {
-      return '8D Audio Music Production is one of the biggest music label. Started by Ayan Singh. All the rights reserved ©️ from T-Series, Zee Music Company and DJ NYK... For the business enquiry - 8dmusicproductionr@gmail.com';
+      return '8D Audio Music Production is one of the biggest music label. Started by Ayan Singh. All the rights reserved ©️ from T-Series, Zee Music Company and DJ NYK.';
     }
     if (question === 'tell me about the company') {
-      return '8D Audio Music Production is one of the biggest music label. Started by Ayan Singh. All the rights reserved ©️ from T-Series, Zee Music Company and DJ NYK... For the business enquiry - 8dmusicproductionr@gmail.com';
+      return '8D Audio Music Production is one of the biggest music label. Started by Ayan Singh. All the rights reserved ©️ from T-Series, Zee Music Company and DJ NYK.';
     }
     if (question === 'give me the contact information') {
-      return 'For the business enquiry - 8dmusicproductionr@gmail.com';
+      return 'For the business enquiry - 8audiodmusicproductionr@gmail.com';
     }
     if (question === 'Give me the contact information') {
-      return 'For the business enquiry - 8dmusicproductionr@gmail.com';
+      return 'For the business enquiry -8daudiomusicproductionr@gmail.com';
     }
     if (question === 'Tell me about the contact information') {
-      return 'For the business enquiry - 8dmusicproductionr@gmail.com';
+      return 'For the business enquiry - 8daudiomusicproductionr@gmail.com';
     }
     if (question === 'tell me about the contact information') {
-      return 'For the business enquiry - 8dmusicproductionr@gmail.com';
+      return 'For the business enquiry - 8daudiomusicproductionr@gmail.com';
     }
     if (question === 'How old are you') {
       return 'I am smaller than you.';
@@ -297,12 +297,14 @@ function sendMessage() {
     return 'Popular music festivals in India include NH7 Weekender, Sunburn Festival, Magnetic Fields, and the Rajasthan International Folk Festival.';
   }
   if (question === 'How does music influence Indian culture?') {
-    return ' Music is deeply woven into the fabric of Indian culture. It plays a vital role in religious ceremonies, festivals, weddings, and everyday life. Indian music reflects the country diversity, with various regions having their own unique musical traditions and styles.';
+    return 'Music is deeply woven into the fabric of Indian culture. It plays a vital role in religious ceremonies, festivals, weddings, and everyday life. Indian music reflects the country diversity, with various regions having their own unique musical traditions and styles.';
   }
   if (question === 'What is the role of ragas in Indian classical music?') {
     return 'Ragas are the melodic frameworks used in Indian classical music. Each raga is associated with specific emotions and times of the day or seasons, and it serves as the basis for improvisation and composition in performances.';
   }
-
+  if (question === 'What is music?') {
+    return 'Music is an art form that organizes sound through rhythm, melody, harmony, and timbre. It can be instrumental, vocal, or both, and exists in many genres and styles. ';
+  }
     // Default answer if no match is found
     return "I'm sorry, I don't have an answer for that question,Our team is working on it.";
   }
@@ -450,7 +452,7 @@ function sendMessage() {
     }
   }
   // Suggestion array
-  var suggestions = ['Tell me about the company', 'What is your Name','I am facing some issue on your website',' Who is known as the Nightingale of India?','What is Bollywood music?','Who are some of the most famous playback singers in Bollywood?','How does music influence Indian culture?'];
+  var suggestions = ['Tell me about the company', 'What is your Name','I am facing some issue on your website',' Who is known as the Nightingale of India?','What is music?','Who are some of the most famous playback singers in Bollywood?','How does music influence Indian culture?'];
   
   // Function to display suggestions
   function displaySuggestions() {
@@ -666,17 +668,30 @@ function displayMessage(message, sender) {
 
   chatBody.appendChild(messageElement);
 }
-// Function to speak the message with a male voice
+
+// Function to speak the message with an Indian English male voice
 function speakMessage(message) {
   var synth = window.speechSynthesis;
   var utterance = new SpeechSynthesisUtterance(message);
 
-  // Select a male voice with a pleasant tone
+  // Select an Indian English male voice
   var voices = synth.getVoices();
-  var maleVoice = voices.find(voice => voice.name === 'Google UK English Male'); // You can adjust the voice to fit your preference
+  var indianEnglishMaleVoice = voices.find(voice => voice.name === 'Google UK English Male'); // Adjust the voice name as per availability
 
-  if (maleVoice) {
-      utterance.voice = maleVoice;
+  if (indianEnglishMaleVoice) {
+      utterance.voice = indianEnglishMaleVoice;
+  } else {
+      // If the specific voice is not available, fallback to any Indian English male voice
+      indianEnglishMaleVoice = voices.find(voice => voice.lang === 'en-IN' && voice.gender === 'male');
+      if (indianEnglishMaleVoice) {
+          utterance.voice = indianEnglishMaleVoice;
+      } else {
+          // If no Indian English male voice is available, fallback to any male voice
+          var maleVoice = voices.find(voice => voice.gender === 'male');
+          if (maleVoice) {
+              utterance.voice = maleVoice;
+          }
+      }
   }
 
   synth.speak(utterance);
