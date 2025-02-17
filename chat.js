@@ -36,6 +36,9 @@ function toggleChat() {
     botMessage.textContent = "Armaan Malik is a popular Indian singer, songwriter, and actor known for his versatile vocals...";
 } else if (message.includes("thanks")) {
     botMessage.textContent = "You're welcome! 😊";
+} else if (message.includes("thank you")) {
+    botMessage.textContent = "You're welcome! 😊";
+            
 } else if (message.includes("hello")) {
     botMessage.textContent = "Hello! How can I help you? 👋";
 } else if (message.includes("hi")) {
