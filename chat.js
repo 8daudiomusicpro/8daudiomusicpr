@@ -104,7 +104,7 @@ function toggleChat() {
 } else if (message.includes("where can i learn to produce 8d audio")) { 
     botMessage.textContent = "📚 You can find tutorials on YouTube, online courses, or learn through trial and error using DAWs like FL Studio.";
 
-} else if (message.includes("create 8d audio")) { 
+} else if (message.includes("created 8d audio")) { 
     botMessage.textContent = "⏳ It depends on the complexity. A simple 8D remix can take 10-30 minutes, while advanced versions may take hours.";
 } else if (message.includes("ragas")) {
     botMessage.textContent = "🎶 A raga is a melodic framework in Indian classical music, often associated with specific times of day, moods, and emotions.";
