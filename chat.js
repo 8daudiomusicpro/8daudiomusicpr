@@ -126,7 +126,7 @@ async function sendMessage() {
         } else if (message.toLowerCase().includes("8d audio music production")) {
             botMessage.innerHTML = `🎧 **8D Audio Music Production** 🎶 is a **leading music label** founded by **Ayan Singh**.  
             We collaborate with **T-Series, Zee Music Company, and DJ NYK** to create **immersive 8D music**.  
-            📩 Business Inquiries: <b>8daudiomusicproductionr@gmail.com</b>.  
+            📩 Business Inquiries: <b>8daudiomusicproductionr@gmail.com</b>  
             🔥 Follow us & experience the **future of sound!**`;
 
         // Special Response for "Arijit Singh"
