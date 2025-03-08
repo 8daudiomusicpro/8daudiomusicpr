@@ -160,6 +160,8 @@ async function sendMessage() {
             botMessage.textContent = "Hi! How can I help you? 👋 ";
         } else if (message.includes("what is your name")) {
             botMessage.textContent = "My name is Byte!😊";
+            } else if (message.includes("What is your name")) {
+            botMessage.textContent = "My name is Byte!😊";
         } else if (message.includes("Who is your founder")) {
             botMessage.textContent = "HarmonicX Group is the proud parent company of 8D Audio Music Production is the founder";
         } else if (message.includes("who is your founder")) {
