@@ -43,7 +43,7 @@ async function searchSong(songName) {
 
 // Fetch Response from Gemini API
 async function fetchGeminiResponse(prompt) {
-    const API_KEY = 'AIzaSyAu1k12jXsnXjchqUZpRe_ZcAOxWHb07U8';  // Replace with your actual API key
+    const API_KEY = 'AIzaSyB48y2OYiA15OX1AlQGhmx8FxoN-Om7t4E';  // Replace with your actual API key
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
     
     const requestBody = { contents: [{ parts: [{ text: prompt }] }] };
