@@ -17,7 +17,14 @@ function toggleChat() {
  }
 
 
-
+{
+  "Keywords": "Harry",
+  "Marketplace": "www.amazon.com",
+  "PartnerTag": "xyz-20",
+  "PartnerType": "Associates",
+  "Resources": ["Images.Primary.Small","ItemInfo.Title","Offers.Listings.Price"],
+  "SearchIndex": "All"
+}
 
  
 // ✅ Spotify API Credentials
