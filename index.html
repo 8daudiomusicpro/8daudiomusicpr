@@ -308,6 +308,19 @@ HarmonicX Group – The parent company powering 8D Audio Music Production.
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
 <script src="chat.js"></script>
+<script>
+  function checkLogin() {
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+      if (isLoggedIn !== "true") {
+          window.location.href = "https://8daudiomusicpro.github.io/8daudiomusicproduction/";
+      }
+  }
+
+  // Call checkLogin() on restricted pages or actions
+  document.addEventListener("DOMContentLoaded", () => {
+      checkLogin(); // Redirect users if not logged in
+  });
+</script>
 
   </body>
 </html>
