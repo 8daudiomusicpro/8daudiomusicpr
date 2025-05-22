@@ -58,7 +58,7 @@ async function searchSong(songName) {
 }
 
 // ✅ Replace with your actual Gemini API Key
-const GEMINI_API_KEY = "AIzaSyCqA8o0Op7n353DuEtBb8Qv2hL1aK-1SOM"; 
+const GEMINI_API_KEY = "AIzaSyBld3XurD4BpW-HyOYw81swWtsjYjCNMOY"; 
 
 async function fetchGeminiResponse(prompt) {
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
