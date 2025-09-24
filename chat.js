@@ -58,10 +58,10 @@ async function searchSong(songName) {
 }
 
 // ✅ Replace with your actual Gemini API Key
-const GEMINI_API_KEY = "AIzaSyBld3XurD4BpW-HyOYw81swWtsjYjCNMOY"; 
+const GEMINI_API_KEY = "AIzaSyCFAEgllBvA_fiRN8j7wrge99OUyUWV1zk"; 
 
 async function fetchGeminiResponse(prompt) {
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
 
     const requestBody = {
         contents: [{ parts: [{ text: prompt }] }]
@@ -517,3 +517,4 @@ micButton.addEventListener('click', function() {
 
 // ✅ Fetch Spotify Token on Load
 getSpotifyToken();
+
